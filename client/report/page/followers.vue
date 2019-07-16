@@ -1,7 +1,6 @@
 <template>
   <div>
-    
-    
+    <h1>我的关注</h1>
   </div>
 </template>
 
@@ -9,17 +8,12 @@
 export default {
   data() {
     return {
-     activeIndex: '1',
+      message: 'this is the report page'
     }
   },
-  methods: {
-    handleSelect(key, keyPath) {}
-  }
 }
 </script>
 
 <style lang="less">
-
-
 
 </style>

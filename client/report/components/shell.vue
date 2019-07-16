@@ -20,11 +20,11 @@ export default {};
     height: 100vh;
 }
 .header{
-  border-bottom: 1px solid #969696
+   border-bottom: 1px solid #e6e6e6;
 }
 .main {
-  width: 70%;
+  width: 85%;
   margin-left: 15%;
-  border:1px solid #969696;
+
 }
 </style>
