@@ -5,9 +5,13 @@
         <slot name="header" />
       </el-header>
       <el-main class="main">
-        <slot name="authorInfo" />
-        <slot name="tabs" />
-        <slot name="main" />
+        <div class="left" />
+        <div class="mid">
+          <slot name="authorInfo" />
+          <slot name="tabs" />
+          <slot name="main" />
+        </div>
+        <div class="right" />
       </el-main>
     </el-container>
   </div>
@@ -23,8 +27,17 @@ export default {};
    border-bottom: 1px solid #e6e6e6;
 }
 .main {
-  width: 85%;
-  margin-left: 15%;
-
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.left {
+  width: 15%;
+}
+.mid {
+  width: 60%;
+}
+.right {
+  width: 25%;
 }
 </style>

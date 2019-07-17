@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Shell from './shell'
 import BlogHeader from './header'
 import BlogList from './blogList'
@@ -106,11 +107,19 @@ export default {
       likeNum: '2000'
     }
   },
+  mounted () {
+    this.getdatalist();
+  },
   methods: {
     //切换导航栏，切换对应的组件
     handleSelect(index) {
       this.defaultActive = index;
       this.currentComponent = this.components[this.indexes.indexOf(index)];
+    },
+    getdatalist() {
+      axios.get('/getDataList').then( res => {
+        console.log(res)
+      })
     }
   }
 }
