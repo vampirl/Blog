@@ -7,7 +7,7 @@
     <div 
       v-if="showLoadingMore" 
       slot="loadMore" 
-      :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }"
+      :style="{ textAlign: 'center', marginTop: '12px', height: '102px', lineHeight: '32px' }"
     >
       <a-spin v-if="loadingMore" />
       <a-button 
@@ -15,6 +15,9 @@
         @click="onLoadMore"
       >
         加载更多
+      </a-button>
+      <a-button @click="addBlog">
+        <a-icon type="plus" />
       </a-button>
     </div>
     <a-list-item 
@@ -46,30 +49,27 @@ export default {
     }
   },
   mounted () {
-    this.getdatalist((res) => {
-      this.loading = false
-      this.data = res.data;
-    });
-    
+    this.getdatalist()
   },
   methods: {
-     getdatalist(callback) {
-      axios.get('/getDataList').then( res => {
-        if (res.status === 200) {
-          callback(res)
-        }
-      })
-    },
     onLoadMore () {
       this.loadingMore = true
-      this.getData((res) => {
-        this.data = this.data.concat(res.results)
+      this.$store.dispatch("GETDATALIST").then( () => {
+        this.data = this.data.concat(this.$store.state.datalist)
         this.loadingMore = false
         this.$nextTick(() => {
           window.dispatchEvent(new Event('resize'))
         })
       })
     },
+    getdatalist() {
+      this.$store.dispatch('GETDATALIST').then(() => {
+        this.loading = false
+        this.data = this.$store.state.datalist;
+      }).catch((err) => {
+        alert(err)
+      })
+    }
   },
 }
 </script>
