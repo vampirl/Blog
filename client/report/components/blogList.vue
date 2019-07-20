@@ -10,15 +10,15 @@
       :style="{ textAlign: 'center', marginTop: '12px', height: '102px', lineHeight: '32px' }"
     >
       <a-spin v-if="loadingMore" />
-      <a-button 
+      <el-button 
         v-else 
         @click="onLoadMore"
       >
         加载更多
-      </a-button>
-      <a-button @click="addBlog">
-        <a-icon type="plus" />
-      </a-button>
+      </el-button>
+      <el-button @click="addBlog">
+        <i class="el-icon-plus" />
+      </el-button>
     </div>
     <a-list-item 
       slot="renderItem" 
@@ -29,6 +29,7 @@
         <a 
           slot="title" 
           class="title"
+          @click="getDetail(item.id)"
         >
           {{ item.title }}
         </a>
@@ -69,8 +70,20 @@ export default {
       }).catch((err) => {
         alert(err)
       })
+    },
+    addBlog() {
+      this.$router.push('/addblog')
+    },
+    getDetail(id) {
+      this.$router.push({
+        path:'/detail',
+        query: {
+          id:id
+          }
+      })
     }
   },
+  
 }
 </script>
 <style>

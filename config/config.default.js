@@ -15,7 +15,7 @@ module.exports = appInfo => {
   config.static = {
     prefix: '/'
   };
-
+  config.api = { url: 'http://localhost:3000/datalist'}
   config.logger = {
     dir: path.join(__dirname, `../logs/${appInfo.name.toLowerCase()}`),
     consoleLevel: 'DEBUG', // NONE
@@ -35,9 +35,6 @@ module.exports = appInfo => {
     maxDays: 10, // keep max days log files, default is `31`. Set `0` to keep all logs
   };
 
-  config.api = {
-    url: ''
-  };
 
   config.cors = {
     origin: '*',
@@ -46,7 +43,8 @@ module.exports = appInfo => {
 
   config.security = {
     csrf: {
-      useSession: true
+      enable:false,
+      // useSession: true
     }
   };
 
