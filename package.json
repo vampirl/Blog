@@ -10,7 +10,8 @@
     "build": "npx webpack --mode production",
     "start": "npx eggctl start --port 8080 --daemon --title=young-phoenix-week1",
     "stop": "npx eggctl stop --title=young-phoenix-week1",
-    "api": "npx json-server --nc ./db/data.json"
+    "api": "npx json-server --nc ./db/data.json",
+    "commit": "git cz"
   },
   "repository": {
     "type": "git",
