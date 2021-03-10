@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>blogDynamic</h1>
+    <h1>blogDynamic1</h1>
   </div>
 </template>
 
