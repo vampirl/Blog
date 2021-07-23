@@ -1,7 +1,7 @@
 {
   "name": "luckyauditweb",
   "version": "1.0.0",
-  "description": "稽核系统后台管理web端",
+  "description": "blog",
   "main": "index.js",
   "scripts": {
     "dev": "npx egg-bin dev | npx webpack --mode development --watch",
