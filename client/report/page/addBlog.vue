@@ -3,38 +3,38 @@
     <div class="content">
       <div style="margin: 40px 0;" />
       <el-input
+        v-model="title"
         type="textarea"
         autosize
         placeholder="请输入标题"
-        v-model="title"
       />
       <div style="margin: 40px 0;" />
       <el-input
+        v-model="description"
         type="textarea"
         autosize
         placeholder="请输入副标题"
-        v-model="description"
       />
       <div style="margin: 40px 0;" />
       <el-input
+        v-model="content"
         type="textarea"
         :autosize="{ minRows: 10, maxRows: 20}"
         placeholder="请输入内容"
-        v-model="content">
-      </el-input>
+      />
       <div style="margin: 40px 0;" />
-      <el-button @click="submit">提交</el-button>
-      <el-button @click="back">返回</el-button>
+      <el-button @click="submit">
+        提交
+      </el-button>
+      <el-button @click="back">
+        返回
+      </el-button>
     </div>
   </div>
 </template>
 <script>
 import axios from "axios"
-import BlogHeader from '../components/header'
 export default {
-    components: {
-      BlogHeader  
-    },
     data () {
         return {
             title: "",
