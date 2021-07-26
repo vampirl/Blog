@@ -5,11 +5,19 @@
     </template>
     <template slot="authorInfo">
       <div class="authorInfo">
-        <img 
-          src="../images/headpic.jpg" 
-          alt="头像" 
-          class="pic"
+        <el-upload
+          class="avatar-uploader"
+          multiple
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
         >
+          <img 
+            src="../images/headpic.jpg"
+            class="pic"
+          >
+        </el-upload>
         <div class="info">
           <span class="username">{{ username }}</span>
           <el-breadcrumb
@@ -78,7 +86,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { imageListConvert }  from '@report/utils/compress.js'
 import Shell from './shell'
 import BlogHeader from './header'
 import BlogList from './blogList'
@@ -112,6 +120,12 @@ export default {
     handleSelect(index) {
       this.defaultActive = index;
       this.currentComponent = this.components[this.indexes.indexOf(index)];
+    },
+    handleAvatarSuccess() {},
+    async beforeAvatarUpload(file) {
+      console.log('file===', file);
+      const compressItem = await imageListConvert(file)
+      console.log('compressItem==', compressItem);
     }
   }
 }
@@ -126,6 +140,15 @@ export default {
   margin-top: 5px;
   margin-bottom: 10px;
 }
+.avatar-uploader .el-upload {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
 .pic {
   width: 80px;
   height: 80px;
